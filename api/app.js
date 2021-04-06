@@ -4,6 +4,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // variable to enable global error logging
 const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'true';
@@ -14,6 +15,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 // setup morgan which gives us http request logging
 app.use(morgan('dev'));
+
+// allow cors requests
+app.use(cors())
+
+
 const db = require('./models/index');
 
 (async () => {
