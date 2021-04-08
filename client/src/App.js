@@ -5,6 +5,9 @@ import {
 
 import './assets/reset.css';
 import './assets/global.css';
+
+import withContext from './components/context';
+
 import CourseListing from './components/courses/courseListing';
 import CourseDetail from './components/courses/courseDetail';
 import AddCourse from './components/courses/addCourse';
@@ -16,9 +19,7 @@ import NotFound from './components/404NotFound';
 import Forbidden from './components/forbidden';
 import Error from './components/error';
 
-
-const axios = require('axios').default;
-const appUtils = require('./AppUtilities')
+const CourseListingWithContext = withContext(CourseListing);
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
     <div id="root">
       <Header />
       <Switch>
-        <Route exact path='/' component={CourseListing} />
+        <Route exact path='/' component={CourseListingWithContext} />
         <Route exact path='/course-detail' component={CourseDetail} />
         <Route exact path='/course-add' component={AddCourse} />
         <Route exact path='/course-update' component={UpdateCourse} />
