@@ -1,16 +1,30 @@
-import React, {useEffect } from 'react';
+import React, {useEffect, useContext, useState } from 'react';
 import Course from './Course';
+import { ApplicationContext } from '../context'
+import App from '../../App';
 
 export default function CourseListing() {  
+  const { data } = useContext(ApplicationContext);
+  const [courses, setCourses] = useState([]);
+  
+
+
   useEffect(() =>{
-    
-  })
+    data.getCourses()
+    .then(elems => {
+      setCourses(elems);
+    })
+  },[])
+
   return (
     <main>
      <div className="wrap main--grid">
-      <Course title='Build a Basic Bookcase' url='course-detail' label='Course A'/>
-      <Course title='Learn How to Program' url='course-detail' label='Course B'/>
-      <Course title='Learn Hot to Test Programs' url='course-detail' label='Course C'/>
+      {
+        courses.map(item => {
+          return <Course key={item.id} title={item.title} url={`course-detail?id=${item.id}`} label='Course'/>
+        })
+      }
+
 
     <a className="course--module course--add--module" href="/course-add">
         <span className="course--add--title">
