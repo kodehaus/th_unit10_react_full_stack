@@ -1,7 +1,7 @@
 import React, {useEffect } from 'react';
-import Course from './course';
+import Course from './Course';
 
-export default ({context}) => {  
+export default function CourseListing() {  
   useEffect(() =>{
     
   })

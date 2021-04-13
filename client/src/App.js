@@ -8,16 +8,16 @@ import './assets/global.css';
 
 import withContext from './components/context';
 
-import CourseListing from './components/courses/courseListing';
-import CourseDetail from './components/courses/courseDetail';
-import AddCourse from './components/courses/addCourse';
-import UpdateCourse from './components/courses/updateCourse';
-import SignUp from './components/authentication/signUp';
-import SignIn from './components/authentication/signIn';
-import Header from './components/header';
+import CourseListing from './components/courses/CourseListing';
+import CourseDetail from './components/courses/CourseDetail';
+import AddCourse from './components/courses/AddCourse';
+import UpdateCourse from './components/courses/UpdateCourse';
+import SignUp from './components/authentication/SignUp';
+import SignIn from './components/authentication/SignIn';
+import Header from './components/Header';
 import NotFound from './components/404NotFound';
-import Forbidden from './components/forbidden';
-import Error from './components/error';
+import Forbidden from './components/Forbidden';
+import Error from './components/Error';
 
 const CourseListingWithContext = withContext(CourseListing);
 
