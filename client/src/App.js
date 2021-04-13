@@ -12,6 +12,7 @@ import AddCourse from './components/courses/AddCourse';
 import UpdateCourse from './components/courses/UpdateCourse';
 import SignUp from './components/authentication/SignUp';
 import SignIn from './components/authentication/SignIn';
+import SignOut from './components/authentication/SignOut';
 import Header from './components/Header';
 import NotFound from './components/404NotFound';
 import Forbidden from './components/Forbidden';
@@ -38,6 +39,7 @@ function App() {
         <Route exact path='/course-update' component={UpdateCourse} />
         <Route exact path='/sign-up' component={SignUp} />
         <Route exact path='/sign-in' component={SignIn} />
+        <Route exact path='/sign-out' component={SignOut} />
         <Route exact path='/forbidden' component={Forbidden} />
         <Route component={NotFound} />
         

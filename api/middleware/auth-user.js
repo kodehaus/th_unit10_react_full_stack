@@ -7,6 +7,7 @@ exports.authenticateUser = async(req, res, next) => {
   let message;
   // Parse the user's credentials from the Authorization header.
   const credentials = auth(req);
+  console.log(req)
 
   // If the user's credentials are available...
   if(credentials) {   
