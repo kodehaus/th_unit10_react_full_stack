@@ -47,7 +47,6 @@ export default class Data {
     }
 
 async updateCourse(courseObj, courseId) {
-  console.dir(courseObj)
   const response = await axios.put(`http://localhost:5000/api/courses/${courseId}`,
     courseObj,
     {

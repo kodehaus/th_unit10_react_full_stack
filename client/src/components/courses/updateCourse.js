@@ -21,7 +21,9 @@ const  UpdateCourse = (props) => {
         courseUpdateObj['description'] = description
         courseUpdateObj['estimatedTime'] = estimatedTime
         courseUpdateObj['materialsNeeded'] = materialsNeeded
-        data.updateCourse(courseUpdateObj, courseId);
+        await data.updateCourse(courseUpdateObj, courseId);
+
+      history.push(`/course-detail/${courseId}`)
     
       }
     useEffect(() =>{
