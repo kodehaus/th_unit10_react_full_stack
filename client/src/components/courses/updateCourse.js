@@ -14,6 +14,10 @@ const  UpdateCourse = (props) => {
     const [estimatedTime, setEstimatedTime] = useState();
     const [materialsNeeded, setMaterialsNeeded] = useState();
     
+    const handleCancel = () => {
+        history.push(`/course-detail/${courseId}`)
+    }
+
     const handleSubmit = async e => {
         e.preventDefault();
         let courseUpdateObj = {};
@@ -61,7 +65,7 @@ const  UpdateCourse = (props) => {
                     <textarea id='materialsNeeded' name='materialsNeeded'  value={materialsNeeded} onChange={e => setMaterialsNeeded(e.target.value)} ></textarea>
                 </div>
             </div>
-            <button className='button' type='submit'>Update Course</button><button className='button button-secondary' onclick='event.preventDefault(); location.href="index.html";'>Cancel</button>
+            <button className='button' type='submit'>Update Course</button><button className='button button-secondary' onClick={handleCancel} >Cancel</button>
         </form>
     </div>
 </main>
