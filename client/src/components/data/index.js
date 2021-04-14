@@ -1,3 +1,4 @@
+import UpdateCourse from '../courses/UpdateCourse';
 
 const axios = require('axios').default;
 const config = require('../../config');
@@ -34,27 +35,27 @@ export default class Data {
 
   async getUser(username, password) {
     const response = await axios.get('http://localhost:5000/api/users',
+      {
+        auth: {
+          username: username,
+          password: password
+        },
+        validateStatus: function (status) {
+          return status < 500; // Resolve only if the status code is less than 500
+        }
+      })
+    }
+
+async updateCourse(courseObj, courseId) {
+  console.dir(courseObj)
+  const response = await axios.put(`http://localhost:5000/api/courses/${courseId}`,
+    courseObj,
     {
       auth: {
-        username: username,
-        password: password
-      },
-      validateStatus: function (status) {
-        return status < 500; // Resolve only if the status code is less than 500
+        username: 'joe@smith.com',
+        password: 'joepassword'
       }
-    }
-  )
-
-    // const body = {
-    //   auth: {
-    //     username: username,
-    //     password: password
-    //   }
-    // }
-    // const response =  await this.api('/api/users','GET', body);
-    return response;
-  } 
-  async createUser() {
-    
+    });
   }
-}
+} 
+

@@ -36,7 +36,7 @@ function App() {
         <Route exact path='/' component={CourseListing} />
         <Route exact path='/course-detail/:id' component={CourseDetail} />
         <Route exact path='/course-add' component={AddCourse} />
-        <Route exact path='/course-update' component={UpdateCourse} />
+        <Route exact path='/update-course/:id' component={UpdateCourse} />
         <Route exact path='/sign-up' component={SignUp} />
         <Route exact path='/sign-in' component={SignIn} />
         <Route exact path='/sign-out' component={SignOut} />

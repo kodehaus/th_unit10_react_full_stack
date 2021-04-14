@@ -22,7 +22,7 @@ const  CourseDetail = (props) => {
     <main>
     <div className='actions--bar'>
         <div className='wrap'>
-            <a className='button' href='/update-course'>Update Course</a>
+            <a className='button' href={`/update-course/${course.id}`}>Update Course</a>
             <a className='button' href='/delete-course'>Delete Course</a>
             <a className='button button-secondary' href='/'>Return to List</a>
         </div>
