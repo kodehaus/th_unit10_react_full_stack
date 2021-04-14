@@ -21,7 +21,7 @@ export default function CourseListing() {
      <div className="wrap main--grid">
       {
         courses.map(item => {
-          return <Course key={item.id} title={item.title} url={`course-detail?id=${item.id}`} label='Course'/>
+          return <Course key={item.id} title={item.title} url={`course-detail/${item.id}`} label='Course'/>
         })
       }
 

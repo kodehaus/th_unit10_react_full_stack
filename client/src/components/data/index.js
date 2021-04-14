@@ -25,7 +25,13 @@ export default class Data {
     const response =  await this.api('/api/courses','GET', {});
     return response.data;
   } 
-  
+
+  async getCourse(id) {
+    const response =  await this.api(`/api/courses/${id}`,'GET', {});
+    return response.data;
+  } 
+
+
   async getUser(username, password) {
     const response = await axios.get('http://localhost:5000/api/users',
     {

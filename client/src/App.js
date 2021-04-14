@@ -34,7 +34,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path='/' component={CourseListing} />
-        <Route exact path='/course-detail' component={CourseDetail} />
+        <Route exact path='/course-detail/:id' component={CourseDetail} />
         <Route exact path='/course-add' component={AddCourse} />
         <Route exact path='/course-update' component={UpdateCourse} />
         <Route exact path='/sign-up' component={SignUp} />

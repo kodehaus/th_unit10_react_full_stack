@@ -11,8 +11,8 @@ export default function HeaderLinks (props) {
   } else {
     return (
       <>
-        <li><a href="sign-up">Sign Up</a></li>
-        <li><a href="sign-in">Sign In</a></li>
+        <li><a href="/sign-up">Sign Up</a></li>
+        <li><a href="/sign-in">Sign In</a></li>
       </>
     )
   }
