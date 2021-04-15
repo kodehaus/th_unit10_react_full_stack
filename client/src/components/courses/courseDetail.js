@@ -1,14 +1,14 @@
 import React, {useEffect, useContext, useState } from 'react';
 import { ApplicationContext } from '../context'
+import CourseDetailLinks from './CourseDetailLinks';
 
 const  CourseDetail = (props) => {  
-    const { data } = useContext(ApplicationContext);
+    const { data, userIsLoggedIn} = useContext(ApplicationContext);
     const [course, setCourse ]= useState({});
     const [owner, setOwner ]= useState({});
-    let courseId = null;
+    let courseId = props.match.params.id;
 
     useEffect(() =>{
-         courseId = props.match.params.id
         if(courseId){
            data.getCourse(courseId)
             .then(elems => {
@@ -16,15 +16,14 @@ const  CourseDetail = (props) => {
                 setOwner(elems.course.User)
             })
         }
-      },[courseId])
+      },[])
     
   return (
+
     <main>
     <div className='actions--bar'>
         <div className='wrap'>
-            <a className='button' href={`/update-course/${course.id}`}>Update Course</a>
-            <a className='button' href='/delete-course'>Delete Course</a>
-            <a className='button button-secondary' href='/'>Return to List</a>
+          <CourseDetailLinks courseId={courseId} ownerId={owner.id} user={userIsLoggedIn} />
         </div>
     </div>
     

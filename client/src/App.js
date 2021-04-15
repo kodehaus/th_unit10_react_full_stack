@@ -6,7 +6,7 @@ import {
 import './assets/reset.css';
 import './assets/global.css';
 
-import CourseListing from './components/courses/CourseListing';
+import CourseListing from './components/courses/Courses';
 import CourseDetail from './components/courses/CourseDetail';
 import AddCourse from './components/courses/AddCourse';
 import UpdateCourse from './components/courses/UpdateCourse';

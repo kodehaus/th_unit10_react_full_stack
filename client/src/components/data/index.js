@@ -44,6 +44,7 @@ export default class Data {
           return status < 500; // Resolve only if the status code is less than 500
         }
       })
+      return response;
     }
 
 async updateCourse(courseObj, courseId) {

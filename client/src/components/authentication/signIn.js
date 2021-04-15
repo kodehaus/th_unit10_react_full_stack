@@ -20,7 +20,10 @@ export default function SignIn (){
     }
   }
   
-
+  const handleCancel = (e) => {
+    e.preventDefault();
+    history.push('/')
+  }
 
   return (
     <main>
@@ -33,9 +36,10 @@ export default function SignIn (){
             <input id='emailAddress' name='emailAddress' type='email' value={emailAddress} onChange={e => setEmailAddress(e.target.value)} />
             <label htmlFor='password'>Password</label>
             <input id='password' name='password' type='password'  value={password} onChange={e => setPassword(e.target.value)} />
-            <button className='button' type='submit'>Sign In</button><button className='button button-secondary' onClick='event.preventDefault(); location.href="index.html";'>Cancel</button>
+            <button className='button' type='submit'>Sign In</button>
+            <button className='button button-secondary' onClick={handleCancel}>Cancel</button>
         </form>
-        <p>Don't have a user account? Click here to <a href='sign-up.html'>sign up</a>!</p>
+        <p>Don't have a user account? Click here to <a href='/sign-up'>sign up</a>!</p>
         
     </div>
 </main>

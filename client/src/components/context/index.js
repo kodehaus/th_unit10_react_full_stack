@@ -24,6 +24,7 @@ export const Provider = (props) => {
 
   async function signIn  (username, password) {
     const user = await data.getUser(username, password);
+    console.dir(data);
     if(user.data.message == null){
       setUserIsLoggedin(user.data);
       // Set cookie

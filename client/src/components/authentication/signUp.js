@@ -1,6 +1,14 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 
 const  SignUp = (props) => {  
+  let history = useHistory();
+
+  const handleCancel = (e) => {
+    e.preventDefault();
+    history.push('/')
+  }
+
   return (
     <main>
     <div className="form--centered">
@@ -17,9 +25,10 @@ const  SignUp = (props) => {
             <input id="password" name="password" type="password"  />
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input id="confirmPassword" name="confirmPassword" type="password"  />
-            <button className="button" type="submit">Sign Up</button><button className="button button-secondary" onClick="event.preventDefault(); location.href='index.html';">Cancel</button>
+            <button className="button" type="submit">Sign Up</button>
+            <button className='button button-secondary' onClick={handleCancel}>Cancel</button>
         </form>
-        <p>Already have a user account? Click here to <a href="sign-in.html">sign in</a>!</p>
+        <p>Already have a user account? Click here to <a href="/sign-in">sign in</a>!</p>
     </div>
 </main>
   )

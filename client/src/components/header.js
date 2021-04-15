@@ -9,7 +9,7 @@ const  Header = (props) => {
         <div className="wrap header--flex">
             <h1 className="header--logo"><a href="/">Courses</a></h1>
             <nav>
-              <ul class="header--signedout">
+              <ul className="header--signedout">
                 <HeaderLinks isLoggedIn={userIsLoggedIn}/>
               </ul>
             </nav>
