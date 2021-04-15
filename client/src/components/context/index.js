@@ -6,7 +6,6 @@ import Cookies from 'js-cookie';
 export const ApplicationContext = React.createContext()
 
 export const Provider = (props) => {
-  const [test, setTest] = useState('this is the thing');
   const [data, setData] = useState(new Data())
   const [userIsLoggedIn, setUserIsLoggedin] = useState(Cookies.getJSON('authenticatedUser'));
 
@@ -24,8 +23,8 @@ export const Provider = (props) => {
 
   async function signIn  (username, password) {
     const user = await data.getUser(username, password);
-    console.dir(data);
     if(user.data.message == null){
+      user.data['password'] = password;
       setUserIsLoggedin(user.data);
       // Set cookie
       Cookies.set('authenticatedUser', JSON.stringify(user.data), {expires: 1});

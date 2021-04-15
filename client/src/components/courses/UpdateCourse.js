@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 
 const  UpdateCourse = (props) => {  
-    const { data } = useContext(ApplicationContext);
+    const { data, userIsLoggedIn } = useContext(ApplicationContext);
     const [owner, setOwner ]= useState({});
     let courseId = props.match.params.id;
     let history = useHistory();
@@ -24,7 +24,7 @@ const  UpdateCourse = (props) => {
         courseUpdateObj['description'] = description
         courseUpdateObj['estimatedTime'] = estimatedTime
         courseUpdateObj['materialsNeeded'] = materialsNeeded
-        await data.updateCourse(courseUpdateObj, courseId);
+        await data.updateCourse(courseUpdateObj, courseId, userIsLoggedIn);
 
       history.push(`/course-detail/${courseId}`)
     

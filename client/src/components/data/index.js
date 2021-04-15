@@ -47,15 +47,31 @@ export default class Data {
       return response;
     }
 
-async updateCourse(courseObj, courseId) {
+async updateCourse(courseObj, courseId, userObj) {
   const response = await axios.put(`http://localhost:5000/api/courses/${courseId}`,
     courseObj,
     {
       auth: {
-        username: 'joe@smith.com',
-        password: 'joepassword'
+        username: userObj.emailAddress,
+        password: userObj.password
       }
     });
+  }
+
+  async addCourse(courseObj, userObj){
+    const response = await axios.post(`http://localhost:5000/api/courses`,
+    courseObj,
+    {
+      auth: {
+        username: userObj.emailAddress,
+        password: userObj.password
+      }
+    },
+    {
+      timeout: 500
+    }
+  );
+  return response;
   }
 } 
 
