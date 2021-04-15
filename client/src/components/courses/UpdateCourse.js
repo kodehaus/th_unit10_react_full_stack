@@ -27,8 +27,8 @@ const  UpdateCourse = (props) => {
         await data.updateCourse(courseUpdateObj, courseId);
 
       history.push(`/course-detail/${courseId}`)
-    }
-
+    
+      }
     useEffect(() =>{
         if(courseId){
            data.getCourse(courseId)
@@ -70,11 +70,6 @@ const  UpdateCourse = (props) => {
     </div>
 </main>
   )
-  async function updateCourse  () {
-      alert('hi')
-      return null;
-  }
-
   
 };
 
