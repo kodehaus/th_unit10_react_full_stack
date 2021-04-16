@@ -2,8 +2,10 @@ import React, {useEffect, useContext, useState } from 'react';
 import { ApplicationContext } from '../context'
 import { useHistory } from "react-router-dom";
 import copy from 'object-copy';
+import ErrorDetail from '../ErrorDetail';
 
 const  SignUp = (props) => {  
+  const [errors, setErrors] = useState([]);
   let history = useHistory();
 
   const { data, signUp, userIsLoggedIn } = useContext(ApplicationContext);
@@ -30,11 +32,15 @@ const  SignUp = (props) => {
     newUser['lastName'] = signUpForm.lastName;
     newUser['emailAddress'] = signUpForm.emailAddress;
     newUser['password'] = signUpForm.password;
-        const user = await signUp(newUser, signUpForm.password)
-    if(user){
-      history.push('/')
+    if(signUpForm.password.localeCompare(signUpForm.confirmPassword) === 0){
+      const response = await signUp(newUser, signUpForm.password)
+      if(response.status >= 200 && response.status <= 299){
+          history.push('/')
+      } else {
+        setErrors(response.data.error)
+      }
     } else {
-      console.log('throw errors');
+      setErrors([{message: "password and confirm password must match."}])
     }
 
   }
@@ -47,6 +53,7 @@ const  SignUp = (props) => {
     <main>
     <div className="form--centered">
         <h2>Sign Up</h2>
+            <ErrorDetail title='Validation Errors' errors={errors} />
         
         <form onSubmit={handleSubmit}>
             <label htmlFor="firstName">First Name</label>

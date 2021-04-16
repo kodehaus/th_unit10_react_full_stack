@@ -1,11 +1,14 @@
 import React, {useEffect, useContext, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { ApplicationContext } from '../context'
+import ErrorDetail from '../ErrorDetail';
 
 export default function SignIn (){  
   let history = useHistory();
-  const [emailAddress, setEmailAddress] = useState('joe@smith.com');
-  const [password, setPassword] = useState('joepassword');
+  const [errors, setErrors] = useState([]);
+  
+  const [emailAddress, setEmailAddress] = useState('');
+  const [password, setPassword] = useState('');
   const { signIn} = useContext(ApplicationContext);
   const [message, setMessage] = useState('');
   let response = null;
@@ -14,7 +17,7 @@ export default function SignIn (){
     e.preventDefault();
     response = await signIn(emailAddress, password);
     if(response.status >= 300){
-      setMessage(<h3 className='validation--errors'>The username or password is invalid. Please try again</h3>);
+      setErrors([{message: `The username or password is invalid. Please try again`}]);
     } else {
       history.push('/')
     }
@@ -29,7 +32,7 @@ export default function SignIn (){
     <main>
     <div className='form--centered'>
         <h2>Sign In</h2>
-        {message}
+            <ErrorDetail title='Authentication Errors' errors={errors} />
         
         <form onSubmit={handleSubmit}>
             <label htmlFor='emailAddress'>Email Address</label>

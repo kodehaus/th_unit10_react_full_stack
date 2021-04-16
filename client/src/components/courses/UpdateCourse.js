@@ -1,6 +1,7 @@
 import React, {useEffect, useContext, useState } from 'react';
 import { ApplicationContext } from '../context'
 import { useHistory } from "react-router-dom";
+import ErrorDetail from '../ErrorDetail';
 
 
 const  UpdateCourse = (props) => {  
@@ -12,6 +13,7 @@ const  UpdateCourse = (props) => {
     const [description, setDescription] = useState('');
     const [estimatedTime, setEstimatedTime] = useState('');
     const [materialsNeeded, setMaterialsNeeded] = useState('');
+    const [errors, setErrors] = useState([]);
     
     const handleCancel = () => {
         history.push(`/course-detail/${courseId}`)
@@ -24,9 +26,15 @@ const  UpdateCourse = (props) => {
         courseUpdateObj['description'] = description
         courseUpdateObj['estimatedTime'] = estimatedTime
         courseUpdateObj['materialsNeeded'] = materialsNeeded
-        await data.updateCourse(courseUpdateObj, courseId, userIsLoggedIn);
+        let response = await data.updateCourse(courseUpdateObj, courseId, userIsLoggedIn);
+        if(response.status >= 200 && response.status <=299){
+            history.push(`/course-detail/${courseId}`)
+        } else if(response.status > 299){
+            setErrors(response.data.error)
+        }
 
-      history.push(`/course-detail/${courseId}`)
+
+//     
     
       }
     useEffect(() =>{
@@ -45,6 +53,7 @@ const  UpdateCourse = (props) => {
     <main>
     <div className='wrap'>
         <h2>Update Course</h2>
+            <ErrorDetail title='Validation Errors' errors={errors} />
         <form onSubmit={handleSubmit}>
             <div className='main--flex'>
                 <div>

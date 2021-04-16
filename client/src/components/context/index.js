@@ -33,14 +33,14 @@ export const Provider = (props) => {
   }
 
   async function signUp(newUser, password) {
-    const userResp = await data.createUser(newUser)
-    if(userResp.status == 200){
-      userResp.data[0]['password'] = password;
-      setUserIsLoggedin(userResp.data[0]);
+    const response = await data.createUser(newUser)
+    if(response.status == 200){
+      response.data[0]['password'] = password;
+      setUserIsLoggedin(response.data[0]);
       // Set cookie
-      Cookies.set('authenticatedUser', JSON.stringify(userResp.data[0]), {expires: 1});
+      Cookies.set('authenticatedUser', JSON.stringify(response.data[0]), {expires: 1});
     }
-    return userResp;
+    return response;
   }
   function signOut() {
     setUserIsLoggedin(null);

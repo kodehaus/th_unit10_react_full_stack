@@ -38,9 +38,6 @@ export default class Data {
         return status < 500; // Resolve only if the status code is less than 500
       }
     });
-    console.log('response---------------------')
-    console.log(response)
-    console.log('response---------------------')
     return response;
 
   }
@@ -66,8 +63,12 @@ async updateCourse(courseObj, courseId, userObj) {
       auth: {
         username: userObj.emailAddress,
         password: userObj.password
+      },
+      validateStatus: function (status) {
+        return status < 500; // Resolve only if the status code is less than 500
       }
     });
+    return response;
   }
 
   async addCourse(courseObj, userObj){
