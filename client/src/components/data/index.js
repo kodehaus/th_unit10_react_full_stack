@@ -89,5 +89,21 @@ async updateCourse(courseObj, courseId, userObj) {
   );
   return response;
   }
+
+
+  async deleteCourse(courseId, user){
+    const response = await axios.delete(`http://localhost:5000/api/courses/${courseId}`,
+    {
+      auth: {
+        username: user.emailAddress,
+        password: user.password
+      }
+    },
+    {
+      timeout: 500
+    }
+  ); 
+
+  }
 } 
 
