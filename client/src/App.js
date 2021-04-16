@@ -6,10 +6,11 @@ import {
 import './assets/reset.css';
 import './assets/global.css';
 
-import CourseListing from './components/courses/Courses';
+import Courses from './components/courses/Courses';
 import CourseDetail from './components/courses/CourseDetail';
 import AddCourse from './components/courses/AddCourse';
 import UpdateCourse from './components/courses/UpdateCourse';
+import DeleteCourse from './components/courses/DeleteCourse';
 import SignUp from './components/authentication/SignUp';
 import SignIn from './components/authentication/SignIn';
 import SignOut from './components/authentication/SignOut';
@@ -33,16 +34,16 @@ function App() {
     <div id="root">
       <Header />
       <Switch>
-        <Route exact path='/' component={CourseListing} />
-        <Route exact path='/course-detail/:id' component={CourseDetail} />
+        <Route exact path='/' component={Courses} />
+        <Route exact path='/courses/:id' component={CourseDetail} />
         <Route exact path='/course-add' component={AddCourse} />
-        <Route exact path='/update-course/:id' component={UpdateCourse} />
-        <Route exact path='/sign-up' component={SignUp} />
-        <Route exact path='/sign-in' component={SignIn} />
-        <Route exact path='/sign-out' component={SignOut} />
+        <Route exact path='/courses/:id/update' component={UpdateCourse} />
+        <Route exact path='/courses/:id/delete' component={DeleteCourse} />
+        <Route exact path='/signup' component={SignUp} />
+        <Route exact path='/signin' component={SignIn} />
+        <Route exact path='/signout' component={SignOut} />
         <Route exact path='/forbidden' component={Forbidden} />
         <Route component={NotFound} />
-        
       </Switch>
     </div>
   </BrowserRouter>

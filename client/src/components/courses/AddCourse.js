@@ -28,7 +28,7 @@ const  AddCourse = (props) => {
 //
         let response = await data.addCourse(courseUpdateObj, userIsLoggedIn);
         if(response.status >= 200 && response.status <=299){
-            history.push(`/course-detail/${response.data.course[0].id}`)
+            history.push(`/courses/${response.data.course[0].id}`)
         } else if(response.status > 299){
             setErrors(response.data.error)
         }

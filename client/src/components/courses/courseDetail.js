@@ -1,6 +1,8 @@
 import React, {useEffect, useContext, useState } from 'react';
 import { ApplicationContext } from '../context'
 import CourseDetailLinks from './CourseDetailLinks';
+import ReactMarkdown from 'react-markdown'
+import {render} from 'react-dom'
 
 const  CourseDetail = (props) => {  
     const { data, userIsLoggedIn} = useContext(ApplicationContext);
@@ -35,8 +37,10 @@ const  CourseDetail = (props) => {
                     <h3 className='course--detail--title'>Course</h3>
                     <h4 className='course--name'>{course.title} </h4>
                     <p>By {owner.firstName} {owner.lastName}</p>
-
-                    {course.description}
+                    <ReactMarkdown>
+                      {course.description}
+                    </ReactMarkdown>
+                    
                 </div>
                 <div>
                     <h3 className='course--detail--title'>Estimated Time</h3>
@@ -44,7 +48,9 @@ const  CourseDetail = (props) => {
 
                     <h3 className='course--detail--title'>Materials Needed</h3>
                     <ul className='course--detail--list'>
-                    {course.materialsNeeded}
+                    <ReactMarkdown>
+                      {course.materialsNeeded}
+                    </ReactMarkdown>
                     </ul>
                 </div>
             </div>

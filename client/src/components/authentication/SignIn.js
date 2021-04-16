@@ -10,7 +10,6 @@ export default function SignIn (){
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const { signIn} = useContext(ApplicationContext);
-  const [message, setMessage] = useState('');
   let response = null;
 
   const handleSubmit = async e => {
@@ -42,7 +41,7 @@ export default function SignIn (){
             <button className='button' type='submit'>Sign In</button>
             <button className='button button-secondary' onClick={handleCancel}>Cancel</button>
         </form>
-        <p>Don't have a user account? Click here to <a href='/sign-up'>sign up</a>!</p>
+        <p>Don't have a user account? Click here to <a href='/signup'>sign up</a>!</p>
         
     </div>
 </main>

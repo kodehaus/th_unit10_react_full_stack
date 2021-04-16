@@ -16,7 +16,7 @@ const  UpdateCourse = (props) => {
     const [errors, setErrors] = useState([]);
     
     const handleCancel = () => {
-        history.push(`/course-detail/${courseId}`)
+        history.push(`/courses/${courseId}`)
     }
 
     const handleSubmit = async e => {
@@ -28,7 +28,7 @@ const  UpdateCourse = (props) => {
         courseUpdateObj['materialsNeeded'] = materialsNeeded
         let response = await data.updateCourse(courseUpdateObj, courseId, userIsLoggedIn);
         if(response.status >= 200 && response.status <=299){
-            history.push(`/course-detail/${courseId}`)
+            history.push(`/courses/${courseId}`)
         } else if(response.status > 299){
             setErrors(response.data.error)
         }
