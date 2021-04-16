@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { ApplicationContext } from './context'
 import { Route } from 'react-router-dom';
-import Forbidden from './Forbidden';
+import { Redirect } from 'react-router-dom';
+
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const { userIsLoggedIn} = useContext(ApplicationContext);
@@ -13,7 +14,7 @@ if(userIsLoggedIn) {
     )
 } else {
   return (
-    <Forbidden />
+    <Redirect to='/signin' />
   )
 }
 

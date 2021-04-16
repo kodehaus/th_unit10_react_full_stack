@@ -26,9 +26,10 @@ export default class Data {
   } 
 
   async getCourse(id) {
-    const response =  await this.api(`/api/courses/${id}`,'GET', {},{
+    const response =  await this.api(`/api/courses/${id}`,'GET', {},
+    {
       validateStatus: function (status) {
-        return status < 600; // Resolve only if the status code is less than 500
+        return status < 500; // Resolve only if the status code is less than 500
       }
     });
     return response;

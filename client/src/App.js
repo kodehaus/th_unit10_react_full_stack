@@ -18,6 +18,7 @@ import SignOut from './components/authentication/SignOut';
 import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
 import NotFound from './components/404NotFound';
+import Error from './components/Error';
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/signin' component={SignIn} />
         <Route exact path='/signout' component={SignOut} />
+        <Route exact path='/error' component={Error} />
         <Route component={NotFound} />
       </Switch>
     </div>

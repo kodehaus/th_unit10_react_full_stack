@@ -10,8 +10,8 @@ const  Delete = (props) => {
   useEffect(() =>{
     if(courseId){
        data.getCourse(courseId)
-        .then(elems => {
-            setCourse(elems.course);
+        .then(response => {
+            setCourse(response.data.course);
         })
     }
   },[courseId, data])
@@ -28,7 +28,7 @@ const  Delete = (props) => {
         <main>
             <div className='wrap'>
                 <h2>Delete</h2>
-                <p>{`Please confirm that you wish to delete the course entitled: ${course.title}`}</p>
+                <p>Please confirm that you wish to delete the course entitled: <span className='emphasis-text'>"{course.title}"</span></p>
             </div>
         </main>
 </main>

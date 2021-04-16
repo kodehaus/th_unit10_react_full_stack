@@ -2,30 +2,41 @@ import React, {useEffect, useContext, useState } from 'react';
 import { ApplicationContext } from '../context'
 import CourseDetailLinks from './CourseDetailLinks';
 import ReactMarkdown from 'react-markdown'
-import { Redirect } from 'react-router-dom';
-import Header from '../Header';
+import { useHistory } from "react-router-dom";
 
 const  CourseDetail = (props) => {  
     const { data, userIsLoggedIn} = useContext(ApplicationContext);
     const [course, setCourse ]= useState({});
     const [owner, setOwner ]= useState({});
-    const [status, setStatus] = useState(0);
     let courseId = props.match.params.id;
+    let history = useHistory();
 
     useEffect( () =>{
       (async function () {
         if(courseId){
-          const response = await data.getCourse(courseId);
-          setStatus(response.status);
-          if(response.status >= 200 && response.status <= 299){
+          let status = 0;
+          // const response = await data.getCourse(courseId);
+          await data.getCourse(courseId)
+          .then((response) => {
+            status = response.status
             setCourse(response.data.course);
             setOwner(response.data.course.User)
-          }
+          })
+          .catch((error) => {
+            status = error.response.status
+            console.dir(error.response.status)
+          })
+          .then((response) => {
+             if(status === 404){
+              history.push(`/404/Not/Found`)
+            } else if(status >= 405){
+              history.push(`/error`)
+            }
+          });
         }
       })();
-      },[courseId, data])
+      },[courseId, data, history])
       
-      if(status === 200){
             return (
               <main>
               <div className='actions--bar'>
@@ -63,11 +74,6 @@ const  CourseDetail = (props) => {
               </div>
           </main>
             )
-      } else {
-        return (
-          <h1>hi</h1>
-        )
-      }
     
 };
 
