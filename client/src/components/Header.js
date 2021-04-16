@@ -1,9 +1,9 @@
-import React, {useEffect, useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { ApplicationContext } from './context'
 import HeaderLinks from './HeaderLinks';
 
 const  Header = (props) => {  
-  const { signIn, userIsLoggedIn} = useContext(ApplicationContext);
+  const { userIsLoggedIn} = useContext(ApplicationContext);
   return (
     <header>
         <div className="wrap header--flex">

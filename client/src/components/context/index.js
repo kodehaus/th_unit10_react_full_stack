@@ -34,7 +34,7 @@ export const Provider = (props) => {
 
   async function signUp(newUser, password) {
     const response = await data.createUser(newUser)
-    if(response.status == 200){
+    if(response.status === 200){
       response.data[0]['password'] = password;
       setUserIsLoggedin(response.data[0]);
       // Set cookie

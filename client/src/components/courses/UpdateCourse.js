@@ -48,7 +48,7 @@ const  UpdateCourse = (props) => {
                 setOwner(elems.course.User)
             })
         }
-      },[courseId])
+      },[courseId, data])
   return (
     <main>
     <div className='wrap'>

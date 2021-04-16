@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ApplicationContext } from '../context'
 import { useHistory } from "react-router-dom";
 import copy from 'object-copy';
@@ -8,7 +8,7 @@ const  SignUp = (props) => {
   const [errors, setErrors] = useState([]);
   let history = useHistory();
 
-  const { data, signUp, userIsLoggedIn } = useContext(ApplicationContext);
+  const { signUp } = useContext(ApplicationContext);
 
   const [signUpForm, setSignUpForm] = useState({
     firstName: '',

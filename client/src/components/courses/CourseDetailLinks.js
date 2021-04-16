@@ -1,5 +1,4 @@
-import React, {useEffect, useContext, useState } from 'react';
-import { ApplicationContext } from '../context'
+import React from 'react';
 
 const  CourseDetailLinks = (props) => {  
 

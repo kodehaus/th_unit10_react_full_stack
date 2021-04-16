@@ -1,5 +1,3 @@
-import UpdateCourse from '../courses/UpdateCourse';
-
 const axios = require('axios').default;
 const config = require('../../config');
   
@@ -103,7 +101,7 @@ async updateCourse(courseObj, courseId, userObj) {
       timeout: 500
     }
   ); 
-
+    return response;
   }
 } 
 

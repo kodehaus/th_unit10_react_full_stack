@@ -2,7 +2,6 @@ import React, {useEffect, useContext, useState } from 'react';
 import { ApplicationContext } from '../context'
 import CourseDetailLinks from './CourseDetailLinks';
 import ReactMarkdown from 'react-markdown'
-import {render} from 'react-dom'
 
 const  CourseDetail = (props) => {  
     const { data, userIsLoggedIn} = useContext(ApplicationContext);
@@ -18,7 +17,7 @@ const  CourseDetail = (props) => {
                 setOwner(elems.course.User)
             })
         }
-      },[])
+      },[courseId, data])
     
   return (
 

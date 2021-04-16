@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ApplicationContext } from '../context'
 import { useHistory } from "react-router-dom";
 import ErrorDetail from '../ErrorDetail';

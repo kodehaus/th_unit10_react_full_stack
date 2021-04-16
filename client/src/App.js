@@ -15,11 +15,8 @@ import SignUp from './components/authentication/SignUp';
 import SignIn from './components/authentication/SignIn';
 import SignOut from './components/authentication/SignOut';
 import Header from './components/Header';
+import PrivateRoute from './components/PrivateRoute';
 import NotFound from './components/404NotFound';
-import Forbidden from './components/Forbidden';
-import Error from './components/Error';
-
-
 
 
 function App() {
@@ -35,14 +32,14 @@ function App() {
       <Header />
       <Switch>
         <Route exact path='/' component={Courses} />
+
+        <PrivateRoute exact path='/courses/create' component={AddCourse} />
+        <PrivateRoute exact path='/courses/:id/update' component={UpdateCourse} />
+        <PrivateRoute exact path='/courses/:id/delete' component={DeleteCourse} />
         <Route exact path='/courses/:id' component={CourseDetail} />
-        <Route exact path='/course-add' component={AddCourse} />
-        <Route exact path='/courses/:id/update' component={UpdateCourse} />
-        <Route exact path='/courses/:id/delete' component={DeleteCourse} />
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/signin' component={SignIn} />
         <Route exact path='/signout' component={SignOut} />
-        <Route exact path='/forbidden' component={Forbidden} />
         <Route component={NotFound} />
       </Switch>
     </div>
