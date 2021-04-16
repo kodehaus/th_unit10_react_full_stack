@@ -11,6 +11,7 @@ import CourseDetail from './components/courses/CourseDetail';
 import AddCourse from './components/courses/AddCourse';
 import UpdateCourse from './components/courses/UpdateCourse';
 import DeleteCourse from './components/courses/DeleteCourse';
+import DeleteCourseConfirm from './components/courses/DeleteCourseConfirm';
 import SignUp from './components/authentication/SignUp';
 import SignIn from './components/authentication/SignIn';
 import SignOut from './components/authentication/SignOut';
@@ -36,6 +37,7 @@ function App() {
         <PrivateRoute exact path='/courses/create' component={AddCourse} />
         <PrivateRoute exact path='/courses/:id/update' component={UpdateCourse} />
         <PrivateRoute exact path='/courses/:id/delete' component={DeleteCourse} />
+        <PrivateRoute exact path='/courses/:id/delete/confirm' component={DeleteCourseConfirm} />
         <Route exact path='/courses/:id' component={CourseDetail} />
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/signin' component={SignIn} />

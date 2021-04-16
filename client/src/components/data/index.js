@@ -26,8 +26,12 @@ export default class Data {
   } 
 
   async getCourse(id) {
-    const response =  await this.api(`/api/courses/${id}`,'GET', {});
-    return response.data;
+    const response =  await this.api(`/api/courses/${id}`,'GET', {},{
+      validateStatus: function (status) {
+        return status < 600; // Resolve only if the status code is less than 500
+      }
+    });
+    return response;
   } 
 
   async createUser(userObj){
@@ -90,15 +94,12 @@ async updateCourse(courseObj, courseId, userObj) {
 
 
   async deleteCourse(courseId, user){
-    const response = await axios.delete(`http://localhost:5000/api/courses/${courseId}`,
+    const response = await axios.put(`http://localhost:5000/api/courses/${courseId}/delete`,{},
     {
       auth: {
         username: user.emailAddress,
         password: user.password
       }
-    },
-    {
-      timeout: 500
     }
   ); 
     return response;

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { ApplicationContext } from './context'
 import HeaderLinks from './HeaderLinks';
 
-const  Header = (props) => {  
+export default function Header (props) {  
   const { userIsLoggedIn} = useContext(ApplicationContext);
   return (
     <header>
@@ -17,5 +17,3 @@ const  Header = (props) => {
     </header>
   )
 };
-
-export default Header;
