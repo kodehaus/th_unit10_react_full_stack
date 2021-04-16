@@ -6,16 +6,16 @@ import Cookies from 'js-cookie';
 export const ApplicationContext = React.createContext()
 
 export const Provider = (props) => {
-  const [data, setData] = useState(new Data())
   const [userIsLoggedIn, setUserIsLoggedin] = useState(Cookies.getJSON('authenticatedUser'));
+  const data = new Data();
 
 
   return (
     <ApplicationContext.Provider value={{ 
       loggedIn: userIsLoggedIn,
-      signIn,signOut,
+      signIn,signOut,signUp,
       userIsLoggedIn,
-      data
+      data: data
     }}>
       { props.children }
     </ApplicationContext.Provider>
@@ -30,6 +30,17 @@ export const Provider = (props) => {
       Cookies.set('authenticatedUser', JSON.stringify(user.data), {expires: 1});
     }
     return user;
+  }
+
+  async function signUp(newUser, password) {
+    const userResp = await data.createUser(newUser)
+    if(userResp.status == 200){
+      userResp.data[0]['password'] = password;
+      setUserIsLoggedin(userResp.data[0]);
+      // Set cookie
+      Cookies.set('authenticatedUser', JSON.stringify(userResp.data[0]), {expires: 1});
+    }
+    return userResp;
   }
   function signOut() {
     setUserIsLoggedin(null);

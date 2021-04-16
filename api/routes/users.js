@@ -20,6 +20,7 @@ const userRequestHandler =  (cb) => {
       } else {
         err.errors = [error];
        }
+       console.log(error)
 
        next(err);
      } else {
@@ -35,6 +36,7 @@ router.get('/', authenticateUser, userRequestHandler(function (req, res, next) {
 
 /* POST  */
 router.post('/', userRequestHandler(async function (req, res, next) {
+  console.log(req.body)
   let user = await User.build(req.body);
   user = await user.save();
   user = await User.findAll({
